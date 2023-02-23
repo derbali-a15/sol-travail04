@@ -1,6 +1,9 @@
 package com.example.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "Banque")
@@ -15,6 +18,18 @@ public class Banque {
 
     @Column(name = "ville")
     private String ville;
+
+    @OneToMany(mappedBy = "banque")
+    @JsonIgnore
+    private Set<Client> clients;
+
+    public Set<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(Set<Client> clients) {
+        this.clients = clients;
+    }
 
     public Banque() {
     }

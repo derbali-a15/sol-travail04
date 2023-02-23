@@ -6,6 +6,7 @@
     <persistence-unit name="bank_system">
         <description>Une unité pour la gestion de la base sytème bancaire</description>
         <class>com.example.entities.Banque</class>
+        <class>com.example.entities.Client</class>
         <exclude-unlisted-classes></exclude-unlisted-classes>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>

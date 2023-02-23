@@ -8,16 +8,15 @@ import jakarta.persistence.Query;
 import java.util.List;
 
 public class BanqueDAO implements IBanqueDAO {
-    EntityManager manager = null;
+    DataManager dataManager = null;
     public BanqueDAO() {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("bank_system");
-        this.manager = factory.createEntityManager();
+        dataManager = DataManager.getSingleInstance();
     }
 
     @Override
     public List<Banque> trouverBanques() {
-        if(manager != null){
-            Query query = manager.createQuery("SELECT b FROM Banque  b");
+        if(dataManager.manager != null){
+            Query query = dataManager.manager.createQuery("SELECT b FROM Banque  b");
             return query.getResultList();
         }
         return null;
