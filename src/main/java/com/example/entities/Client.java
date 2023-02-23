@@ -3,6 +3,8 @@ package com.example.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "Client")
 public class Client {
@@ -24,6 +26,18 @@ public class Client {
     @JoinColumn(name = "banqueId", referencedColumnName = "id")
     //@JsonIgnore
     private Banque banque;
+
+    @OneToMany(mappedBy = "client")
+    @JsonIgnore
+    private Set<Compte> comptes;
+
+    public Set<Compte> getComptes() {
+        return comptes;
+    }
+
+    public void setComptes(Set<Compte> comptes) {
+        this.comptes = comptes;
+    }
 
     public Client() {
     }
